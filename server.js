@@ -9,11 +9,11 @@ var PORT = process.env.PORT || 8080;
 
 //Gathering pursuing data
 app.use(express.urlencoded({ extended: true }));
-app.use(express,json());
+app.use(express.json());
 
 //requiring the Route files
-require("./routes/apiRoutes")(app);
-require("./require/htmlRoutes")(app);
+require("./apiRoutes")(app);
+require("./htmlRoutes")(app);
 
 //Starting the server
 app.listen(PORT, function() {
