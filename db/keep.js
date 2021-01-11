@@ -1,3 +1,4 @@
+//Requirements -----------------------------------------------------------
 const fs = require("fs");
 const util = require("util");
 var path = require("path");
@@ -7,6 +8,7 @@ var writeFileAsync = util.promisify(fs.writeFile);
 const { v4: uuidv4 } = require('uuid');
 const { json } = require("express");
 
+//Method to read write keep and delete notes -----------------------------
 class Keep {
     read() {
         return readFileAsync("db/db.json", "utf8")
@@ -21,10 +23,12 @@ class Keep {
         })
     }
     addNotes() {
-
+        this.write().then((notes) => {
+            return JSON.parse(notes)
+        })
     }
     deleteNotes() {
-        
+
     }
 }
 module.exports = new Keep();
