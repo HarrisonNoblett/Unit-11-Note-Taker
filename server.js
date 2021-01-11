@@ -4,16 +4,20 @@ var express = require("express");
 //Creating the express server
 var app = express();
 
-//initial listening port
+const apiRoutes = require("./apiRoutes")
+const htmlRoutes = require("./htmlRoutes")
+
+//Initial listening port
 var PORT = process.env.PORT || 8080;
 
 //Gathering pursuing data
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static("public"));
 
-//requiring the Route files
-require("./apiRoutes")(app);
-require("./htmlRoutes")(app);
+//Requiring the Route files
+app.use("/api", apiRoutes)
+app.use("/", htmlRoutes)
 
 //Starting the server
 app.listen(PORT, function() {
