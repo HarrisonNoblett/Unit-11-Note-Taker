@@ -7,8 +7,8 @@ let router = require("express").Router();
 router.get("/notes", function(req, res) {
     keep.getNotes().then((notes) => res.json(notes))
 })
-router.post("spi/notes", function() {
-    keep.getNotes
+router.post("/notes", function() {
+    keep.addNotes().then((notes) => res.json(notes))
 })
 router.delete("api/notes:id", function() {
 

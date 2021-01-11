@@ -14,8 +14,7 @@ class Keep {
         return readFileAsync("db/db.json", "utf8")
     }
     write(notes) {
-        return writeFileAsynce("./dbjson", JSON.stringify
-        (notes))
+        return writeFileAsync("./db.json", JSON.stringify(notes))
     }
     getNotes() {
         return this.read().then((notes) => {
@@ -23,9 +22,7 @@ class Keep {
         })
     }
     addNotes() {
-        this.write().then((notes) => {
-            return JSON.parse(notes)
-        })
+       return this.write().then.readFileAsync("./db.json")
     }
     deleteNotes() {
 
