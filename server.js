@@ -8,7 +8,7 @@ const apiRoutes = require("./apiRoutes")
 const htmlRoutes = require("./htmlRoutes")
 
 //Initial listening port
-var PORT = process.env.PORT || 8080;
+var PORT = process.env.PORT || 3000;
 
 //Gathering pursuing data
 app.use(express.urlencoded({ extended: true }));

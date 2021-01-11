@@ -24,7 +24,7 @@ class Keep {
 
     }
     deleteNotes() {
-
+        
     }
 }
 module.exports = new Keep();
