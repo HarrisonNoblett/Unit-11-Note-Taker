@@ -22,7 +22,7 @@ class Keep {
         })
     }
     addNotes() {
-       return this.write().then.readFileAsync("./db.json")
+       return this.write().then.readFileAsync("./db.json", "utf8")
     }
     deleteNotes() {
 
