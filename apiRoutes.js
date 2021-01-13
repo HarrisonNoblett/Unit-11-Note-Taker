@@ -5,13 +5,14 @@ let router = require("express").Router();
 
 //getting the Routes-------------------------------------------
 router.get("/notes", function(req, res) {
-    keep.getNotes().then((notes) => res.json(notes))
+    keep.getNotes(req.body).then((notes) => res.json(notes))
 })
-router.post("/notes", function() {
-    keep.addNotes().then((notes) => res.json(notes))
+router.post("/notes", function(req, res) {
+    keep.addNotes(req.body).then((notes) => res.json(notes))
 })
-router.delete("api/notes:id", function() {
-
+router.delete("/notes/:id", function(req, res) {
+    keep.deleteNotes(req.params.id).then((notes) => 
+    res.json(notes));
 })
 
 module.exports = router

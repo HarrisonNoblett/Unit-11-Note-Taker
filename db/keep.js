@@ -14,18 +14,35 @@ class Keep {
         return readFileAsync("db/db.json", "utf8")
     }
     write(notes) {
-        return writeFileAsync("./db.json", JSON.stringify(notes))
+        return writeFileAsync("db/db.json", JSON.stringify(notes))
     }
     getNotes() {
         return this.read().then((notes) => {
-            return JSON.parse(notes)
+            return JSON.parse(notes);
         })
     }
-    addNotes() {
-       return this.write().then.readFileAsync("./db.json", "utf8")
+    addNotes(note) {
+        const {title, text} = note;
+        const id = uuidv4();
+        const newNote = {title, text, id};
+        console.log(newNote)
+       return this.read(). then((notes) => {
+            const n = JSON.parse(notes);
+            const newNotes = [...n, newNote];
+            this.write(newNotes).then(() => {
+                return newNotes;
+            });
+        });
     }
-    deleteNotes() {
+    deleteNotes(id) {
+        return this.getNotes()
+        .then((notes) => {
+            return notes.filter((note) => note.id !== id)
+        })
+            .then((filteredNotes) => {
+               return this.write(filteredNotes);
+            })
+        }
+    }
 
-    }
-}
 module.exports = new Keep();
