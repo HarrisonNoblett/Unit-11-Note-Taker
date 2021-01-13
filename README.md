@@ -12,7 +12,7 @@
   * [Contributing](#Contributing)
   * [Github](#Github)
   * [Email](#Email)
-  * [Heroku}(#Heroku)
+  * [Heroku](#Heroku)
 
   ## Installation: 
   * JavaScript, Node.js, node_modules, README.md, package.json
